@@ -1,0 +1,29 @@
+# builds e executáveis
+.build/
+*.o
+*.obj
+a.out
+a.out.exe
+*.exe.tmp
+
+# progresso gerado
+piscina/.progresso.json
+piscina/PROGRESSO.md
+
+# sessões e histórico do simulador
+exames/sessoes/
+exames/historico.json
+
+# instalação local e material de apoio
+tools/mingw64/
+tools/__pycache__/
+tools/validacao/
+.wsl/
+.ref/
+__pycache__/
+*.pyc
+
+# lixo de sistema/editor
+Thumbs.db
+desktop.ini
+.DS_Store

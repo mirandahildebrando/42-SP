@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Simulador de klist para o Windows (sem Kerberos configurado).
+cat <<'EOF'
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: hilde@42SP.ORG.BR
+
+Valid starting       Expires              Service principal
+2026-10-29 20:00:00  2026-10-30 20:00:00  krbtgt/42SP.ORG.BR@42SP.ORG.BR
+        renew until 2026-11-05 20:00:00
+EOF

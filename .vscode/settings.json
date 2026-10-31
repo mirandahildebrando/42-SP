@@ -1,0 +1,26 @@
+{
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.rulers": [80],
+    "editor.renderWhitespace": "selection",
+    "editor.formatOnSave": false,
+    "terminal.integrated.defaultProfile.windows": "Git Bash 42",
+    "terminal.integrated.profiles.windows": {
+        "Git Bash 42": {
+            "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+            "args": ["--rcfile", "${workspaceFolder}\\tools\\shell\\42rc", "-i"]
+        }
+    },
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.compilerPath": "${workspaceFolder}\\tools\\mingw64\\bin\\gcc.exe",
+    "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+    "C_Cpp.default.includePath": ["${workspaceFolder}/**"],
+    "files.associations": {
+        "*.h": "c"
+    }
+}

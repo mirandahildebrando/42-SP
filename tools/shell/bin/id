@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Stub de id para o exercício print_groups (Windows não tem os grupos da 42).
+if [ "$1" = "-Gn" ]; then
+    user="${2:-${FT_USER:-hilde}}"
+    case "$user" in
+        nours)  echo "god root admin master nours bocal" ;;
+        daemon) echo "daemon bin" ;;
+        *)      echo "$user" ;;
+    esac
+    exit 0
+fi
+if [ -x /usr/bin/id ]; then
+    exec /usr/bin/id "$@"
+fi
+echo "uid=1000(${USER:-hilde}) gid=1000(${USER:-hilde})"

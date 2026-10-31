@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Stub de ifconfig para o exercício MAC no Windows.
+cat <<'EOF'
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.0.10  netmask 255.255.255.0  broadcast 10.0.0.255
+        ether 00:11:22:33:44:55  txqueuelen 1000  (Ethernet)
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+
+wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.20  netmask 255.255.255.0  broadcast 192.168.1.255
+        ether 66:77:88:99:aa:bb  txqueuelen 1000  (Ethernet)
+EOF

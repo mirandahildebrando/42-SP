@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# rev mínimo para o Git Bash do Windows (o Git for Windows não traz rev).
+while IFS= read -r linha || [ -n "$linha" ]; do
+    invertida=""
+    i=$((${#linha} - 1))
+    while [ "$i" -ge 0 ]; do
+        invertida="$invertida${linha:$i:1}"
+        i=$((i - 1))
+    done
+    printf '%s\n' "$invertida"
+done

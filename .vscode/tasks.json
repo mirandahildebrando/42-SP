@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "42: corrigir exercício da pasta atual",
+            "type": "shell",
+            "command": "${workspaceFolder}\\TESTAR.cmd",
+            "args": ["--pasta", "${fileDirname}"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": [],
+            "presentation": { "reveal": "always", "panel": "dedicated" }
+        },
+        {
+            "label": "42: corrigir lista (C00, C01, ...)",
+            "type": "shell",
+            "command": "${workspaceFolder}\\TESTAR.cmd",
+            "args": ["${input:lista}"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": [],
+            "presentation": { "reveal": "always", "panel": "dedicated" }
+        },
+        {
+            "label": "42: norminette do arquivo",
+            "type": "shell",
+            "command": "${workspaceFolder}\\NORMINETTE.cmd",
+            "args": ["${file}"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
+            "label": "42: inserir cabeçalho",
+            "type": "shell",
+            "command": "${workspaceFolder}\\42HEADER.cmd",
+            "args": ["${file}"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        },
+        {
+            "label": "42: painel de progresso",
+            "type": "shell",
+            "command": "${workspaceFolder}\\TESTAR.cmd",
+            "options": { "cwd": "${workspaceFolder}" },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "lista",
+            "type": "promptString",
+            "description": "Lista (C00, C01, ... C08, Shell00, Shell01)",
+            "default": "C00"
+        }
+    ]
+}
