@@ -72,7 +72,8 @@ LISTA = {
             "dica": (
                 "`yes A | head -c 40 > testShell00` cria os 40 bytes. "
                 "`chmod 545 testShell00` ajusta o modo. Se o Windows ignorar o "
-                "chmod, use `tar --mode=545 -cf testShell00.tar testShell00 .`."
+                "chmod, use `tar --mode=545 -cf testShell00.tar testShell00 .`. "
+                "O validador local também aceita 0444 como fallback do NTFS."
             ),
             "erros": [
                 "Criar o tar antes de ajustar o modo.",
@@ -103,15 +104,17 @@ LISTA = {
                 "```\n\n"
                 "O `ls -l` do subject mostra `test3` e `test5` com link count 2. "
                 "No Git Bash, use `ln test3 test5`; se o Windows não criar hard "
-                "link, crie dois arquivos de 1 byte com o mesmo conteúdo (o "
-                "validador local aceita essa adaptação)."
+                "link, crie dois arquivos de 1 byte com o mesmo conteúdo. O "
+                "NTFS pode transformar `chmod` em 0644/0444 e `ln -s` em uma "
+                "pasta; o validador local aceita esse fallback do Windows."
             ),
             "exemplo": "ls -l\ntotal ...\ndrwx--xr-x ... test0\n-rwx--xr-- ... test1",
             "dica": (
                 "Use `chmod` com modo octal: `chmod 715 test0`. Para os bytes, "
                 "`head -c 4 /dev/zero > test1`, `head -c 1 /dev/zero > test3`, "
                 "`head -c 2 /dev/zero > test4`. Crie o symlink com "
-                "`ln -s test0 test6`."
+                "`ln -s test0 test6`; no Windows, se virar pasta, o validador "
+                "aceita o fallback."
             ),
             "erros": [
                 "Colocar barra no nome dos diretórios ao criar (o `ls` mostra a barra, o nome não tem).",

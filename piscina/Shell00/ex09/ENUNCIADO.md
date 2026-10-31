@@ -16,7 +16,7 @@ Crie o arquivo `ft_magic` no formato do comando `file`, capaz de detectar arquiv
 
 ## Protótipo
 
-```c
+```text
 ft_magic
 ```
 
@@ -40,9 +40,8 @@ A sintaxe é `offset tipo teste [mensagem]`. Comece com `42 string 42`.
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell00/ex09`.
 
 ---

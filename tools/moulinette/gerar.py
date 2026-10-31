@@ -44,7 +44,7 @@ def enunciado(lista, ex):
         "",
         "## Protótipo",
         "",
-        "```c",
+        "```" + ("text" if ex.get("tipo") == "shell" else "c"),
         bloco(ex["prototipo"]),
         "```",
         "",
@@ -71,14 +71,25 @@ def enunciado(lista, ex):
                 "Não é necessário entregá-lo, mas ele será usado na compilação.",
                 "",
             ]
+    if ex.get("tipo") == "shell":
+        checklist = [
+            "- [ ] O arquivo tem exatamente o nome pedido.",
+            "- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).",
+            "- [ ] Permissões, conteúdo e saída seguem o enunciado.",
+            "- [ ] Testei com `moulinette " + f"{lista['id']}/{ex['id']}" + "`.",
+        ]
+    else:
+        checklist = [
+            "- [ ] O arquivo tem exatamente o nome pedido.",
+            "- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).",
+            "- [ ] Compila com `gcc -Wall -Wextra -Werror`.",
+            "- [ ] `norminette` passa sem erros.",
+            "- [ ] Testei com `moulinette " + f"{lista['id']}/{ex['id']}" + "`.",
+        ]
     linhas += [
         "## Checklist antes de testar",
         "",
-        "- [ ] O arquivo tem exatamente o nome pedido.",
-        "- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).",
-        "- [ ] Compila com `gcc -Wall -Wextra -Werror`.",
-        "- [ ] `norminette` passa sem erros.",
-        "- [ ] Testei com `moulinette " + f"{lista['id']}/{ex['id']}" + "`.",
+        *checklist,
         "",
         "---",
         "",

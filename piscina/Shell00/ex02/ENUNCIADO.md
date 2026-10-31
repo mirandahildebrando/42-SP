@@ -24,11 +24,11 @@ dr-x---r--  test2/            (0504)
 lrwxr-xr-x  test6 -> test0    (symlink)
 ```
 
-O `ls -l` do subject mostra `test3` e `test5` com link count 2. No Git Bash, use `ln test3 test5`; se o Windows não criar hard link, crie dois arquivos de 1 byte com o mesmo conteúdo (o validador local aceita essa adaptação).
+O `ls -l` do subject mostra `test3` e `test5` com link count 2. No Git Bash, use `ln test3 test5`; se o Windows não criar hard link, crie dois arquivos de 1 byte com o mesmo conteúdo. O NTFS pode transformar `chmod` em 0644/0444 e `ln -s` em uma pasta; o validador local aceita esse fallback do Windows.
 
 ## Protótipo
 
-```c
+```text
 exo2.tar
 ```
 
@@ -43,7 +43,7 @@ drwx--xr-x ... test0
 
 ## Dica
 
-Use `chmod` com modo octal: `chmod 715 test0`. Para os bytes, `head -c 4 /dev/zero > test1`, `head -c 1 /dev/zero > test3`, `head -c 2 /dev/zero > test4`. Crie o symlink com `ln -s test0 test6`.
+Use `chmod` com modo octal: `chmod 715 test0`. Para os bytes, `head -c 4 /dev/zero > test1`, `head -c 1 /dev/zero > test3`, `head -c 2 /dev/zero > test4`. Crie o symlink com `ln -s test0 test6`; no Windows, se virar pasta, o validador aceita o fallback.
 
 ## Erros comuns
 
@@ -54,9 +54,8 @@ Use `chmod` com modo octal: `chmod 715 test0`. Para os bytes, `head -c 4 /dev/ze
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell00/ex02`.
 
 ---

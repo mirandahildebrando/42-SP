@@ -16,7 +16,7 @@ Crie um arquivo `testShell00` com **40 bytes** e permissão `-r--r-xr-x` (modo 0
 
 ## Protótipo
 
-```c
+```text
 testShell00.tar
 ```
 
@@ -29,7 +29,7 @@ ls -l
 
 ## Dica
 
-`yes A | head -c 40 > testShell00` cria os 40 bytes. `chmod 545 testShell00` ajusta o modo. Se o Windows ignorar o chmod, use `tar --mode=545 -cf testShell00.tar testShell00 .`.
+`yes A | head -c 40 > testShell00` cria os 40 bytes. `chmod 545 testShell00` ajusta o modo. Se o Windows ignorar o chmod, use `tar --mode=545 -cf testShell00.tar testShell00 .`. O validador local também aceita 0444 como fallback do NTFS.
 
 ## Erros comuns
 
@@ -40,9 +40,8 @@ ls -l
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell00/ex01`.
 
 ---

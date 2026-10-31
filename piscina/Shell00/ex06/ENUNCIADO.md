@@ -16,7 +16,7 @@ Crie `git_ignore.sh`, um script que lista os arquivos existentes ignorados pelo 
 
 ## Protótipo
 
-```c
+```text
 git_ignore.sh
 ```
 
@@ -41,9 +41,8 @@ mywork.c~$
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell00/ex06`.
 
 ---

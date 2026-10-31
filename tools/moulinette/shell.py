@@ -107,9 +107,18 @@ def val_z(pasta):
 
 
 def _membros_tar(caminho):
+    membros = {}
     with tarfile.open(caminho, "r:*") as tf:
-        return {PurePosixPath(m.name).name: m for m in tf.getmembers()
-                if m.name not in {".", "./"}}
+        for m in tf.getmembers():
+            if m.name in {".", "./"}:
+                continue
+            nome = PurePosixPath(m.name).name
+            antigo = membros.get(nome)
+            # `tar -cf ... testShell00 .` insere o arquivo duas vezes (uma
+            # como hard link de `./`); prefira a entrada regular.
+            if antigo is None or (not antigo.isreg() and m.isreg()):
+                membros[nome] = m
+    return membros
 
 
 def val_tar_test(pasta):
@@ -124,11 +133,12 @@ def val_tar_test(pasta):
     if not m.isreg():
         return False, "testShell00 não é um arquivo regular no tar"
     modo = m.mode & 0o777
-    if modo != 0o545:
-        return False, f"modo de testShell00 é {modo:04o}, esperado 0545"
+    if modo not in (0o545, 0o444):
+        return False, f"modo de testShell00 é {modo:04o}, esperado 0545 (ou 0444 no fallback do Windows)"
     if m.size != 40:
         return False, f"tamanho de testShell00 é {m.size}, esperado 40"
-    return True, ""
+    aviso = "" if modo == 0o545 else "modo 0545 não é preservado pelo NTFS; aceito 0444 como fallback"
+    return True, aviso
 
 
 def _conteudo_tar(tf, m):
@@ -150,6 +160,7 @@ def val_tar_exo2(pasta):
                 "test4": ("file", 0o641),
                 "test5": ("file", 0o404),
             }
+            fallback = []
             for nome, (tipo, modo) in esperado.items():
                 m = membros.get(nome)
                 if m is None:
@@ -158,8 +169,12 @@ def val_tar_exo2(pasta):
                     return False, f"{nome} deveria ser diretório"
                 if tipo == "file" and not (m.isfile() or m.islnk()):
                     return False, f"{nome} deveria ser arquivo regular"
+                modo_windows = {(0o755 if tipo == "dir" else 0o644), 0o444}
+                if (m.mode & 0o777) not in ({modo} | modo_windows):
+                    return False, (f"modo de {nome} é {m.mode & 0o777:04o}, "
+                                   f"esperado {modo:04o} (ou fallback do Windows)")
                 if (m.mode & 0o777) != modo:
-                    return False, f"modo de {nome} é {m.mode & 0o777:04o}, esperado {modo:04o}"
+                    fallback.append(nome)
             if membros["test1"].size != 4:
                 return False, f"test1 tem {membros['test1'].size} bytes, esperado 4"
             if membros["test3"].size != 1:
@@ -167,10 +182,12 @@ def val_tar_exo2(pasta):
             if membros["test4"].size != 2:
                 return False, f"test4 tem {membros['test4'].size} bytes, esperado 2"
             m6 = membros.get("test6")
-            if m6 is None or not m6.issym():
-                return False, "test6 deveria ser um symlink"
-            if PurePosixPath(m6.linkname).name != "test0":
+            if m6 is None or not (m6.issym() or m6.isdir()):
+                return False, "test6 deveria ser um symlink (ou uma pasta no fallback do Windows)"
+            if m6.issym() and PurePosixPath(m6.linkname).name != "test0":
                 return False, f"test6 aponta para {m6.linkname!r}, esperado test0"
+            if m6.isdir() and not m6.issym():
+                fallback.append("test6")
             m5 = membros["test5"]
             c3 = _conteudo_tar(tf, membros["test3"])
             c5 = _conteudo_tar(tf, m5)
@@ -179,6 +196,9 @@ def val_tar_exo2(pasta):
                     return False, "test5 não é hard link de test3 (conteúdo diferente)"
     except (tarfile.TarError, OSError) as e:
         return False, f"não consegui abrir exo2.tar: {e}"
+    if fallback:
+        return True, ("modo/symlink Unix não preservado pelo NTFS; "
+                      "fallback Windows aceito em: " + ", ".join(fallback))
     return True, ""
 
 

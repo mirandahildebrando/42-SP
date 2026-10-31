@@ -16,7 +16,7 @@ No cluster da 42, obtenha um ticket Kerberos e rode `klist > klist.txt`. No Wind
 
 ## Protótipo
 
-```c
+```text
 klist.txt
 ```
 
@@ -40,9 +40,8 @@ O arquivo deve ter `Ticket cache`, `Default principal` e uma linha com `krbtgt`.
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell00/ex03`.
 
 ---

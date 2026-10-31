@@ -16,7 +16,7 @@ Crie `add_chelou.sh`, um script que leia `$FT_NBR1` na base `'\"?!`, `$FT_NBR2` 
 
 ## Protótipo
 
-```c
+```text
 add_chelou.sh
 ```
 
@@ -40,9 +40,8 @@ Converta cada caractere para dígito, use uma calculadora de base (bc/awk) e map
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell01/ex08`.
 
 ---

@@ -1,18 +1,13 @@
-# Piscina 42SP — listas de treino
+# Piscina 42SP — ambiente de treino
 
-Este diretório contém as listas **C00 a C08**, **Shell00** e **Shell01** com
-enunciados em português, testes locais e um corretor que imita o essencial da
-Moulinette: cabeçalho 42, norminette, compilação com `-Wall -Wextra -Werror`,
-funções proibidas e testes de comportamento.
+Este diretório contém as listas da piscina, enunciados em português e um corretor local que imita o essencial da Moulinette: cabeçalho 42, norminette, compilação com `-Wall -Wextra -Werror`, funções proibidas e testes de comportamento.
 
 ## Comece por aqui
 
 1. Leia [COMO-TREINAR.md](COMO-TREINAR.md).
-2. Abra o terminal com `..\ABRIR-42.cmd` (na raiz do projeto).
+2. Abra o terminal com `ABRIR-42.cmd` (na raiz do projeto).
 3. Rode `moulinette` para ver o painel.
 4. Entre em `C00/ex00`, leia o enunciado e crie o arquivo.
-
-Se estiver no Prompt de Comando, use `..\TESTAR.cmd C00/ex00`.
 
 ## Listas
 
@@ -37,9 +32,9 @@ moulinette                  # painel de progresso
 moulinette C00              # corrige a lista C00
 moulinette C00/ex00         # corrige um exercício
 moulinette --pasta .        # corrige o exercício desta pasta
-exame iniciar exam00        # inicia um simulado de exame
-exame status                # tempo restante
-exame entregar              # corrige o simulado
+exame exam00                # inicia um simulado de exame
+exame exam00 status         # tempo restante
+exame exam00 entregar       # corrige o simulado
 42header arquivo.c          # insere o cabeçalho 42
 ```
 
@@ -47,21 +42,20 @@ exame entregar              # corrige o simulado
 
 - O corretor é local: ele **não** substitui a Moulinette oficial.
 - Os testes são para aprender; não os leia antes de tentar resolver.
-- Não copie soluções de colegas nem gere código com IA durante a piscina
-  oficial. Aqui, use tudo como ferramenta de estudo.
-- Se um teste parecer errado, anote o caso e avise: o objetivo é que o ambiente
-  fique fiel.
+- Não copie soluções de colegas nem gere código com IA durante a piscina oficial. Aqui, use tudo como ferramenta de estudo.
+- Se um teste parecer errado, anote o caso e me avise: o objetivo é que o ambiente fique fiel.
 
 ## Estrutura
 
 ```text
 piscina/
-├─ C00/ ... C08/       listas de C
-├─ Shell00/ Shell01/   listas de shell
-├─ COMO-TREINAR.md
-└─ PROGRESSO.md        gerado pelo corretor
+├── C00/ ... C08/      listas de C
+├── Shell00/ Shell01/  listas de shell
+├── exames/            simulados e banco de exercícios
+├── COMO-TREINAR.md
+└── PROGRESSO.md       gerado pelo corretor
 ```
 
-O plano de estudo e o simulador ficam na raiz do projeto e em `../exames/`.
+---
 
 Bom treino. A piscina é difícil, mas é feita de exercícios pequenos. Um por vez.

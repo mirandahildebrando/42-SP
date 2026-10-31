@@ -23,7 +23,7 @@ Na piscina, faça isso no primeiro dia; sem inscrição você não pode fazer o 
 
 ## Protótipo
 
-```c
+```text
 INSCRICAO.md
 ```
 
@@ -47,9 +47,8 @@ O calendário e o projeto aparecem separados na intranet. Confirme os dois.
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell01/ex00`.
 
 ---

@@ -16,7 +16,7 @@ Coloque no arquivo `midLS` **uma única linha de comando** que liste os arquivos
 
 ## Protótipo
 
-```c
+```text
 midLS (uma linha de comando)
 ```
 
@@ -39,9 +39,8 @@ arquivo_novo, pasta_nova/, arquivo_antigo
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell00/ex04`.
 
 ---

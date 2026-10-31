@@ -16,7 +16,7 @@ Crie `r_dwssap.sh`, um script que leia `/etc/passwd`, remova comentários, pegue
 
 ## Protótipo
 
-```c
+```text
 r_dwssap.sh
 ```
 
@@ -40,9 +40,8 @@ Monte o pipeline em etapas e teste cada uma. `cut -d: -f1`, `rev`, `sort -r`, `s
 ## Checklist antes de testar
 
 - [ ] O arquivo tem exatamente o nome pedido.
-- [ ] O cabeçalho 42 está preenchido (rode `42header arquivo.c`).
-- [ ] Compila com `gcc -Wall -Wextra -Werror`.
-- [ ] `norminette` passa sem erros.
+- [ ] O script roda com `bash arquivo.sh` (ou `/bin/sh`).
+- [ ] Permissões, conteúdo e saída seguem o enunciado.
 - [ ] Testei com `moulinette Shell01/ex07`.
 
 ---
