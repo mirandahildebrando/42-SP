@@ -4,6 +4,7 @@
 *.obj
 a.out
 a.out.exe
+*.exe
 *.exe.tmp
 
 # progresso gerado
